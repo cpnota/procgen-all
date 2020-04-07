@@ -22,8 +22,9 @@ envs = [
     'starpilot',
 ]
 
+frames = 200e6
 device = 'cuda'
 envs = [ProcgenAtariEnv(env, device=device) for env in envs]
-SlurmExperiment(a2c(device=device), envs, 200e6, sbatch_args={
+SlurmExperiment(a2c(device=device, entropy_loss_scaling=0.01, last_frame=frames), envs, frames, sbatch_args={
     'partition': '1080ti-long'
 })
