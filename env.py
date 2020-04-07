@@ -15,7 +15,7 @@ class ProcgenAtariEnv(GymEnvironment):
         # construct the environment
         env = gym.make('procgen:procgen-{}-v0'.format(name), distribution_mode="easy")
         # apply a subset of wrappers
-        env = WarpFrame(env)
+        # env = WarpFrame(env)
         # initialize
         super().__init__(env, *args, **kwargs)
         self._name = name
